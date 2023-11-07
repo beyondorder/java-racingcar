@@ -17,11 +17,10 @@ public class RacingCarGame {
     public RacingCarGame(int inputCarCount, int inputGameCount){
         carCount = inputCarCount;
         gameCount = inputGameCount;
+        inputCheck(carCount, gameCount);
     }
 
     public  List<String> play(){
-
-        inputCheck(carCount, gameCount);
 
         List<Car> carList = carList();
 
