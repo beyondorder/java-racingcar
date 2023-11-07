@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class RacingCarGame {
 
-    private NumberBox numberBox = new GameNumberBox();
+    private final NumberBox numberBox;
 
     private static final int PIVOT_NUMBER_TO_FORWARD = 4;
     private static final int NUMBER_TO_GET_RANDOM_NUMBER = 10;
@@ -14,9 +14,10 @@ public class RacingCarGame {
     private final int carCount;
     private final int gameCount;
 
-    public RacingCarGame(int inputCarCount, int inputGameCount){
+    public RacingCarGame(int inputCarCount, int inputGameCount, NumberBox numberBox){
         carCount = inputCarCount;
         gameCount = inputGameCount;
+        this.numberBox = numberBox;
         inputCheck(carCount, gameCount);
     }
 

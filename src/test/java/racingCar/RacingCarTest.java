@@ -15,7 +15,7 @@ public class RacingCarTest {
     @DisplayName("자동차 대수에 0보다 작은 값을 입력할 경우 에러 발생 ")
     void carCountInputError(int input){
         assertThatThrownBy(() -> {
-            new RacingCarGame(input,3).play();
+            new RacingCarGame(input,3, new GameNumberBox()).play();
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -24,7 +24,7 @@ public class RacingCarTest {
     @DisplayName("게임 횟수에 0보다 작은 값을 입력할 경우 에러 발생 ")
     void gameCountInputError(int input){
         assertThatThrownBy(() -> {
-            new RacingCarGame(3, input).play();
+            new RacingCarGame(3, input, new GameNumberBox()).play();
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -32,14 +32,14 @@ public class RacingCarTest {
     @ValueSource(ints = {4,13,77})
     @DisplayName("참여한 자동차의 개수는 입력된 자동차의 개수와 같아야한다.")
     void ActualCarCount(int carCount){
-        assertThat(new RacingCarGame(carCount, 20).play().size()).isEqualTo(carCount);
+        assertThat(new RacingCarGame(carCount, 20, new GameNumberBox()).play().size()).isEqualTo(carCount);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {4,13,77})
     @DisplayName("최대로 전진한 자동차의 거리는 0이상 입력된 게임횟수 이하여야한다.")
     void ActualMaxDistance(int gameCount){
-        int result = new RacingCarGame(3, gameCount).play().stream().mapToInt(String::length).max()
+        int result = new RacingCarGame(3, gameCount, new GameNumberBox()).play().stream().mapToInt(String::length).max()
                 .orElseThrow(NoSuchElementException::new);
         assertThat(result).isGreaterThanOrEqualTo(0);
         assertThat(result).isLessThanOrEqualTo(gameCount);
