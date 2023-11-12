@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Response {
-    private final List<String[]> eachStageInfo = new ArrayList<>();
+    private final List<List<String>>eachStageInfo = new ArrayList<>();
     private final List<Car> carList = new ArrayList<>();
 
 
-    public void addEachStageInfo(String[] result){
+    public void addEachStageInfo(List<String> result){
         eachStageInfo.add(result);
     }
 
@@ -20,7 +20,7 @@ public class Response {
         return this.carList;
     }
 
-    public List<String[]> eachStageInfo(){
+    public List<List<String>> eachStageInfo(){
         return this.eachStageInfo;
     }
 }

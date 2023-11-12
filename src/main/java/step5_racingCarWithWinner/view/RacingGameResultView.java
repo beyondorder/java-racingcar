@@ -12,6 +12,7 @@ public class RacingGameResultView {
 
 
     public void printResult(Response response) {
+
         response.eachStageInfo().forEach((stageInfo)->{
             for(String info: stageInfo){
                 System.out.println(info);

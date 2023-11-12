@@ -31,7 +31,7 @@ public class RacingGame{
 
     public List<Car> play() {
 
-        List<Car> carList = getCarList();
+        List<Car> carList = createCarList();
 
         entireGame(carList);
 
@@ -63,7 +63,7 @@ public class RacingGame{
         return RacingGameUtils.getRandomInt(NUMBER_TO_GET_RANDOM_NUMBER) > NUMBER_TO_GO_FORWARD;
     }
 
-    private List<Car> getCarList() {
+    private List<Car> createCarList() {
         return Arrays.stream(carNames).map(Car::new).collect(Collectors.toList());
     }
 }
